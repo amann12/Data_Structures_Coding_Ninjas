@@ -1,0 +1,65 @@
+String to Integer
+
+Write a recursive function to convert a given string into the number it represents. That is input will be a numeric string that contains only numbers, you need to convert the string into corresponding integer and return the answer.
+Input format :
+Numeric string S (string, Eg. "1234")
+Output format :
+Corresponding integer N (int, Eg. 1234)
+Constraints :
+0 <= |S| <= 9
+where |S| represents length of string S.
+Sample Input 1 :
+00001231
+Sample Output 1 :
+1231
+Sample Input 2 :
+12567
+Sample Output 2 :
+12567
+
+
+
+///////////////////////////////////Solution////////////////////////////////
+
+#include<cstring>
+#include<cmath>
+
+// int helper(char ch[],int n){
+//     if(ch[0]=='\0'){
+//         return 0;
+//     }
+    
+//     int ans=helper(ch+1,n/10);
+//     int x=(ch[0]-'0')*n;
+//     return x+ans;
+// }
+
+
+
+int stringToNumber(char ch[]) {
+    // Write your code here
+// int n=pow(10,strlen(ch)-1);
+//     return helper(ch,n);
+
+    
+     if(ch[0]=='\0'){
+        return 0;
+     }
+    
+    
+     int ans=stringToNumber(ch+1);
+    
+     int x=ch[0]-'0';
+     return ans*10+x;
+    
+    
+    
+    
+    // int small=stringToNumber(ch+1);
+    //  int b=ch[0]-'0';
+    // return b*pow(10,strlen(small))+small;
+    
+}
+
+
+    
