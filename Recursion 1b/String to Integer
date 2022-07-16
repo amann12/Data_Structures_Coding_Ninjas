@@ -24,40 +24,25 @@ Sample Output 2 :
 #include<cstring>
 #include<cmath>
 
-// int helper(char ch[],int n){
-//     if(ch[0]=='\0'){
-//         return 0;
-//     }
+int helper(char ch[],int n){
+    if(ch[0]=='\0'){
+        return 0;
+    }
     
-//     int ans=helper(ch+1,n/10);
-//     int x=(ch[0]-'0')*n;
-//     return x+ans;
-// }
+    int ans=helper(ch+1,n/10);
+    int x=(ch[0]-'0')*n;
+    return x+ans;
+}
 
 
 
 int stringToNumber(char ch[]) {
     // Write your code here
-// int n=pow(10,strlen(ch)-1);
-//     return helper(ch,n);
+int n=pow(10,strlen(ch)-1);
+    return helper(ch,n);
 
     
-     if(ch[0]=='\0'){
-        return 0;
-     }
-    
-    
-     int ans=stringToNumber(ch+1);
-    
-     int x=ch[0]-'0';
-     return ans*10+x;
-    
-    
-    
-    
-    // int small=stringToNumber(ch+1);
-    //  int b=ch[0]-'0';
-    // return b*pow(10,strlen(small))+small;
+
     
 }
 
