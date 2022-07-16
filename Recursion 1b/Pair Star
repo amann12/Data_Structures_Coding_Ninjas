@@ -1,0 +1,44 @@
+Pair Star
+
+Given a string S, compute recursively a new string where identical chars that are adjacent in the original string are separated from each other by a "*".
+Input format :
+String S
+Output format :
+Modified string
+Constraints :
+0 <= |S| <= 1000
+where |S| represents length of string S.
+Sample Input 1 :
+hello
+Sample Output 1:
+hel*lo
+Sample Input 2 :
+aaaa
+Sample Output 2 :
+a*a*a*a
+
+
+////////////////////////////Splution/////////////////////////////
+
+
+// Change in the given string itself. So no need to return or print the changed string.
+
+void pairStar(char ch[]) {
+    // Write your code here
+	if(ch[0]=='\0'){
+        return;
+    }
+    
+    pairStar(ch+1);
+    int n=0;
+    while(ch[++n]);
+    
+    if(ch[0]==ch[1]){
+        for(int i=n-1;i>=1;i--){
+            ch[i+1]=ch[i];
+        }
+        ch[1]='*';
+        ch[n+1]='\0';
+    }
+    	
+}
