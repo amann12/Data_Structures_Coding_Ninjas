@@ -1,0 +1,95 @@
+Recursion 1b
+
+Given a string, compute recursively a new string where all appearances of "pi" have been replaced by "3.14".
+Constraints :
+1 <= |S| <= 50
+where |S| represents the length of string S. 
+Sample Input 1 :
+xpix
+Sample Output :
+x3.14x
+Sample Input 2 :
+pipi
+Sample Output :
+3.143.14
+Sample Input 3 :
+pip
+Sample Output :
+3.14p
+Constraints:-
+1<=|S|<=50
+
+
+
+////////////////////////////////Solution/////////////////////////////////
+
+#include<string.h>
+
+void replacePi(char ch[]) {
+	// Write your code here
+    
+    /*
+    	xpix  x3.1
+        
+        pix    3.14x
+        ix    
+        x
+    	
+    
+    
+    */
+    
+    
+
+    int n=0;
+    while(ch[++n]);
+    
+    if(n==0 || n==1)
+        return;
+    
+    replacePi(ch+1);
+    
+    int newSize=0;
+    while(ch[++newSize]);
+    
+    
+	if(ch[0]=='p' && ch[1]=='i'){
+        ch[newSize+2]='\0';
+        for(int i=newSize-1;i>=2;i--){
+            ch[i+2]=ch[i];
+        }
+        ch[0]='3';
+        ch[1]='.';
+        ch[2]='1';
+        ch[3]='4';
+    }
+    
+    
+    
+    
+//     int n=strlen(ch);
+    
+//     if(n==0 || n==1){
+//         return ;
+//     }
+    
+//     if(ch[0]=='p'){
+//         if(ch[1]=='i'){
+//             for(int i=n-1;i>=0;i--){
+//                 ch[i+2]=ch[i];
+//             }
+//             ch[0]='3';
+//             ch[1]='.';
+//             ch[2]='1';
+//         	ch[3]='4';
+            
+//             n=n+2;
+//         }
+//     }
+    
+    
+//     replacePi(ch+1);
+    
+}
+
+
