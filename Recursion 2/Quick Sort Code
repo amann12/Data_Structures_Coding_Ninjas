@@ -1,0 +1,97 @@
+Quick Sort Code
+
+Sort an array A using Quick Sort.
+Change in the input array itself. So no need to return or print anything.
+
+
+Input format :
+Line 1 : Integer n i.e. Array size
+Line 2 : Array elements (separated by space)
+Output format :
+Array elements in increasing order (separated by space)
+Constraints :
+1 <= n <= 10^3
+Sample Input 1 :
+6 
+2 6 8 5 4 3
+Sample Output 1 :
+2 3 4 5 6 8
+Sample Input 2 :
+5
+1 5 2 7 3
+Sample Output 2 :
+1 2 3 5 7 
+
+////////////////////////////Solution////////////////////////
+
+/*
+	To apply the method explained in the hint video, we have to add two more parameters in the function call.
+    This can be done by calling a helper function from given function. The helper function can have three parameters: array, 
+    start index, end index.  
+	
+	Skeleton code to achieve this:
+	#include <iostream>
+	using namespace std;
+	
+	void quickSort(int input[], int start, int end)
+	{
+    		// your code goes here 
+	}
+	void quickSort(int input[], int size)
+	{
+    		quickSort(input, 0, size - 1);
+	}
+		
+*/
+
+int partition(int *a,int s,int e){
+    int countSmall=0;
+    for(int i=s+1;i<=e;i++){
+        if(a[i]<=a[s]){     
+            countSmall++;	
+        }
+    }
+    // a[s]=a[s]+a[s+countSmall]-(a[s+countSmall]=a[s]);
+    int x = s+countSmall;
+    int temp = a[s];
+    a[s] = a[x];
+    a[x] = temp;
+    
+    
+    int i=s,j=e;
+    while(i<=x && j>=x){
+  
+    if(a[i]<=a[x])
+        i++;
+    else if(a[j]>a[x])
+        j--;
+        
+        else{
+			temp=a[i];
+            a[i]=a[j];
+            a[j]=temp;
+            i++;j--;
+        }
+    }
+    return countSmall+s;
+}
+
+void helper(int *a,int s,int e){
+    if(s>=e){
+        return;
+    }
+    
+    int c=partition(a,s,e);
+    helper(a,s,c-1);
+    helper(a,c+1,e);
+    
+}
+
+void quickSort(int a[], int n) {
+  /* Don't write main().
+     Don't read input, it is passed as function argument.
+     Change in the given array itself.
+     Taking input and printing output is handled automatically.
+  */
+	helper(a,0,n-1);
+}
